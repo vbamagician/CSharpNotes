@@ -1,0 +1,22 @@
+Access Specifiers:
+
+in C#, each keywords are modifiers and modifiers which are dealing with scoping of the class elements are called as Access Specifiers. 
+
+There are five types of Access Spacifiers
+
+1. 	Private - within class
+2. 	Internal - Within Project
+3. 	Protected - Within Different Project as well but only with Inheritated Child Class
+4. 	Protected Internal - Within Different Project as well but not available on non-child
+5. 	Public - Available to Everywhere in all projects whether child or non-child class. 
+
+Important Notes:
+
+- each element of the class can be accessed within class (even private memebers).
+-	each member of the class are bydefault private members.
+-	we cannot declare class or types explicitely as private.
+-	elements defined in namespace cannot be explicitly declared as private, protected or protected internal.
+- we can only use internal and public specifiers to declare types and classes
+-	types and classes are bydefault Internal!
+-	"protected" memebers are only accessible to a child class and not accessible from the non child class. This means, if you inherit "Program" class in "Program2" Class, Program2 becomes Child Class of Program class. But when in project, if we are initializing the class using constructor method, that class or object become non-child class. So you will not be able access "protected" members of the base class. 
+- Access Specifier, "protected internal" is a combination of "protected" and "internal". It means, if in the situation, where protected and internal members are not available, protected internal members will autoamtically hidden. 
