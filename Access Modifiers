@@ -13,10 +13,10 @@ There are five types of Access Spacifiers
 Important Notes:
 
 - each element of the class can be accessed within class (even private memebers).
--	each member of the class are bydefault private members.
--	we cannot declare class or types explicitely as private.
--	elements defined in namespace cannot be explicitly declared as private, protected or protected internal.
+- each member of the class are bydefault private members.
+- we cannot declare class or types explicitely as private.
+- elements defined in namespace cannot be explicitly declared as private, protected or protected internal.
 - we can only use internal and public specifiers to declare types and classes
--	types and classes are bydefault Internal!
--	"protected" memebers are only accessible to a child class and not accessible from the non child class. This means, if you inherit "Program" class in "Program2" Class, Program2 becomes Child Class of Program class. But when in project, if we are initializing the class using constructor method, that class or object become non-child class. So you will not be able access "protected" members of the base class. 
+- types and classes are bydefault Internal!
+- "protected" memebers are only accessible to a child class and not accessible from the non child class. This means, if you inherit "Program" class in "Program2" Class, Program2 becomes Child Class of Program class. But when in project, if we are initializing the class using constructor method, that class or object become non-child class. So you will not be able access "protected" members of the base class. 
 - Access Specifier, "protected internal" is a combination of "protected" and "internal". It means, if in the situation, where protected and internal members are not available, protected internal members will autoamtically hidden. 
