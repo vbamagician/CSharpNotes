@@ -9,6 +9,7 @@ There are four (4) kind of variables in C#
 
 - if a variable explicitly declared by using the static modifier or else if a variable declared under any static block then those variables are static. other than else are non-static
 
+```cs
 public class Program 
 {
 	int x; 		// non-static variable
@@ -19,11 +20,13 @@ public class Program
 	 	int z; 	// static variable
 	}
 }
+```
 
 - we do not required to initialize the class to use static variables! for a non-static variables we have to initialize the class to use it. 
 
 - Object reference is required for the non-static field, mehtod and property
 
+```cs
 public class Program 
 {
 	int x; 		// non-static variable
@@ -36,9 +39,11 @@ public class Program
 		console.writeline(x); // this is in-valid line 
 	}
 }
+```
 
 - following is the valid way to use the non-static variables
 
+```cs
 public class Program 
 {
 	int x = 100; 		// non-static variable
@@ -56,6 +61,7 @@ public class Program
 		console.writeline(p2.x); // THis is new instance and valid line 
 	}
 }
+```
 
 - Static variable of the class initialized immediately once the execution of class starts where as instance variables are initialized only after creating the class instance as well as each and every time the instance of class created. 
 
@@ -67,6 +73,7 @@ public class Program
 
 - Initialization of instance variables/non-static assiciated with instance creation and Constructor calling, so instance variable can be initialized through constructor.
 
+```cs
 public class Program 
 {
 	int x = 100; 		// non-static variable
@@ -89,7 +96,8 @@ public class Program
 		console.writeline(p1.x); // This is valid line  
 		console.writeline(p2.x); // THis is new instance and valid line 
 	}
-} 
+}
+```
 
 => Constants
 
@@ -100,6 +108,7 @@ const float pi = 3.14f;
 
 Note: "Literal" meaning Value of the variable. 
 
+```cs
 public class Program 
 {
 	int x = 100; 		// non-static variable
@@ -124,6 +133,7 @@ public class Program
 		console.writeline(p2.x); // THis is new instance and valid line 
 	}
 } 
+```
 
 - behaviour of constant variable will be similiar to the behaviour of static variables. i.e. it is initialized one and only one time in the life cycle of the class and doesn't required instnce of a class. 	
 
@@ -133,6 +143,7 @@ public class Program
 
 - variables declared using readonly keyword referred as readonly variables and these variables also cannot be modified like constants but after initialization. It's not a compulsory to initilize variable at the time of declaration. they can also be initilized under the constructor. 
 
+```cs
 public class Program 
 {
 	int x = 100; 		// non-static variable
@@ -160,6 +171,7 @@ public class Program
 
 	}
 } 
+```
 
 - the behaviour of readonly variables will be similiar to the behaviour of non-static variables. that is initialized only after instance of classs and once for each instance of the class created.  
 
@@ -168,12 +180,3 @@ public class Program
 - we can assign value to read values during the constructor or initilization. 
 
 - constant variable is fixed value of whole class where as read only variables is fixed value for the each instance of the class created. 
-
-
-
-
-
-
-
-
-
