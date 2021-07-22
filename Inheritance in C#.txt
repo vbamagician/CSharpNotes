@@ -1,0 +1,238 @@
+Inheritance: 
+
+It's a mechanism of consuming the members of one class in another class by establishing parent/child relationship between the classes which provides re-usability.  
+
+=> Syntaxual Approach 
+
+Terminology of Child Parent class or inheritance 
+
+[<modifiers>] class <child Class> : <parent Class>
+
+class A
+{
+	set of members
+}
+class B : A 
+{
+	consuming the members of A from here
+}
+
+A => Parent or Base or Super 
+B => Child or Derived or Sub
+
+NOTE: In inheritance child class can consume members of it's parents as if it is the owner of those members. (except private members of the parent class) 
+
+=> Example
+
+namespace InheritanceLacture 
+{
+	public Class1 
+	{
+		public Class1() //constructor
+		{
+			console.writeline("Class1 constructor is called");		
+		}
+		public void Test1() 
+		{
+			console.writeline("This is Test1");
+		}
+		public void Test2() 
+		{
+			console.writeline("This is Test2");
+		}
+	}	
+
+	public Class2 : Class1 
+	{
+		Class2() //constructor private as specifier is not there! 
+		{
+			console.writeline("Class2 constructor is called");		
+		}
+		public void Test3() 
+		{
+			console.writeline("This is Test3");	
+		}
+		static void Main() 
+		{
+			Class2 c = new Class2();
+			c.Test1;
+			c.Test2;
+			c.Test3;
+			console.ReadLine();
+		}
+	}
+}
+
+OUTPUT of Class2 Main Method:
+
+	Class1 constructor is called
+	Class2 constructor is called
+	This is Test1
+	This is Test2
+	This is Test3
+
+IMP #1. Parent class constructor must be accesible to child class, otherwise inheritance will not be possible. 
+
+IMP #2. In inheritance child class can access parents class members but a parent classes can never accces child class members that is purely defined under the child class. 
+
+IMP #3. We can initialize a parent classes variables by using it's child class instance to make it as a reference, so that reference will be consuming the memory of child class instance, but in this case also we can not call pure/any child class memebers by using that reference. 
+
+=> Example
+
+namespace InheritanceLecture 
+{
+	public Class1 
+	{
+		public Class1() //constructor
+		{
+			console.writeline("Class1 constructor is called");		
+		}
+		public void Test1() 
+		{
+			console.writeline("This is Test1");
+		}
+		public void Test2() 
+		{
+			console.writeline("This is Test2");
+		}
+	}	
+
+	public Class2 : Class1 
+	{
+		Class2() //constructor private as specifier is not there! 
+		{
+			console.writeline("Class2 constructor is called");		
+		}
+		public void Test3() 
+		{
+			console.writeline("This is Test3");	
+		}
+		static void Main() 
+		{
+			Class1 p;
+			Class2 c = new Class2();
+			p = c; // initialized through reference method 
+			p.Test1;
+			p.Test2;
+			console.ReadLine();
+		}
+	}
+}
+
+OUTPUT of Class2 Main Method:
+
+	Class1 constructor is called
+	Class2 constructor is called
+	This is Test1
+	This is Test2
+
+IMP #4. Every class that is defined by us or predefined in the library of the language has a default parent class. i.e. object class of system namespace. 
+	
+=> Example
+
+	static void Main() 
+	{
+	 	Object obj = New Object(); //are four methods that can be access in any class!
+		obj.Equals, 
+		obj.GetHashCode, 
+		obj.GetType, 	
+		obj.ToString 
+	}
+
+=> Types of inheritance:
+
+- No. of Parent classes a child classes have or the no. of child classes a parent class have. 
+
+According to C++, as object oriented programming came into picture from the C++ for the first time so, there are 5 type of inheritances. 
+
+1. Single 		// Supported in C#
+2. Multi-Level 		// Supported in C#
+3. Hierarchical 		// Supported in C#
+4. Hybrid 		// NOT-Supported in C#
+5. Multiple 		// NOT-Supported in C#
+
+=> Single
+
+Class1 -> Class2 
+one parent one child structure (linear structure) 
+
+=> Multi-Level 
+
+Class1 -> Class2 -> Class3
+Again linear structure, the child of a first parent is also a parent to a other class and so on...
+
+=> Hierarchical 
+
+Class1 -> Class2
+Class1 -> Class3
+
+when two classes are inheritating from the same parent class, the structure is termed as hierarchical. 
+
+=> Hybrid
+
+Class1 -> Class2 -> Class4
+Class1 -> Class3 -> Class4
+
+Hybrid type is a combination of Multi-level and Hierarchical type. In general term, we also known as composition. 
+
+=> Multiple or Composition 
+
+Class1 -> Class3
+Class2 -> Class3
+
+in this type, child class is deriving combinations of members from the different parent classes. In short, this kind of inheritance have single child having multiple parents. 
+
+========
+
+NOTE: But in general, we only consider two kinds of inheritances 
+
+1. Single Inheritance 
+2. Multiple Inheritance
+
+- if at all a class has 1 immediate parent class to it we call it as single class and if it has more than 1 immediate parent classes to it, we call it as multiple inheritances. 
+
+========
+
+IMP #5. In C#, we don't have support for multiple inheritance through classes. What we provide is only single inheritance through class.
+
+IMP #6. In the first point we learnt whenever child class instance is created, child class constrouctor implicitly call it's parent class constrouctor but only if the constructor is parameter less, where as if the constructor of the parent class has paramterized, child constructor cannot implicitely call it's parent's constructor. SO, to overcome the problem, it is the responcibility of a programmer to call explicitely parent class constructor from child class constructor and pass values to those parameters. to call parent's constructor from child class we need to use BASE() keyword used. 
+
+=> Example:
+
+namespace InheritanceLecture 
+{
+	public Class1 
+	{
+		public Class1(int X) //constructor
+		{
+			console.writeline("Class1 constructor is called" + " " + X);		
+		}
+		public void Test1() 
+		{
+			console.writeline("This is Test1");
+		}
+		public void Test2() 
+		{
+			console.writeline("This is Test2");
+		}
+	}	
+
+	public Class2 : Class1 
+	{
+		public Class2(int a) : base(a) //we have to use base keyword to pass parameter
+		{
+			console.writeline("Class2 constructor is called");		
+		}
+		public void Test3() 
+		{
+			console.writeline("This is Test3");	
+		}
+		static void Main() 
+		{
+			Class2 c = new Class2(50); // pass parameter to class2 constructor to load base class.
+			console.ReadLine();
+		}
+	}
+}
+
+NOTE: We have to pass parameter to the constructor of the child class then we can assign that parameter to the base to get value dynamically from the initlization of child class.
