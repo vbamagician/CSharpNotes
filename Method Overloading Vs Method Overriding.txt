@@ -1,0 +1,91 @@
+Method Overloading:
+1. In this case, we define multiple methods with same name by changing their parameters.
+2. This can be performed either within Class as well as between parent child classes also.  
+3. While overloading, a parent class method under the child class, child class doesn't require to take any permission from the parent class. 
+4. Overloading is all about defining multiple behavoiours to a method. 
+
+Method Overriding:
+1. In this case, we define multiple methods with same name and same parameters. 
+2. This can be performed only between parent-child classes and never be performed within the same class. 
+3. While overriding, a parent class's method under the child class, the child class requires a permission from it's parent. 
+4. Overriding is all about changing the behaviour of parent method under the child class. 
+
+=> Example: Concept
+
+public Class1
+{	
+	public void Show(); //method overloading 
+	public void Show(int i); //method overloading 
+	public void Test();
+}
+
+public Class2 : Class1
+{
+	public void Show(string s); //method overloading 
+	public void Test(); //We have overriding the Test Method of Class1
+}
+
+<=
+
+=> Example: VStudio
+
+namespace Myprogram 
+{
+	public class LoadParent
+	{
+		public void Show() 
+		{
+			Console.WriteLine("Parent's Show Mehtod is Called");
+		}
+		public virtual void Test() //Change 3: method override
+		{
+			Console.WriteLine("Parent's Test Mehtod is Called");
+		}
+	}
+
+	public class LoadChild : LoadParent
+	{
+		public void Show(int i) //Change 2 : Method Overloading 
+		{
+			Console.WriteLine("Child's Show Method is Called");
+		}
+		public override void Test() //Change 3: method override
+		{
+			Console.WriteLine("Child's Test Mehtod is Called");
+		}		
+		static void Main()
+		{
+			LoadChild c = New LoadChild();
+			c.Show();
+			c.Show(10); //Change 2: Method Overloading
+			c.Test(); 
+			
+			Console.ReadLine();
+		}
+	}
+}
+
+<=
+
+=> Output Change 1: in the Console or CMD
+
+Parent's Show Mehtod is Called
+Parent's Test Mehtod is Called
+
+<=
+
+=> Output Change 2: in the Console or CMD
+
+Parent's Show Mehtod is Called
+Child's Show Method is Called
+Parent's Test Mehtod is Called
+
+<=
+
+=> Output Change 3: in the Console or CMD
+
+Parent's Show Mehtod is Called
+Child's Show Method is Called
+Child's Test Mehtod is Called
+
+<=

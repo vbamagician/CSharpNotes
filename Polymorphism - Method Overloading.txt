@@ -1,0 +1,61 @@
+Method Overloading: Method overloading is an approach of defining multiple behaviours to the method. 
+
+Overloading comes into the polymorphism.
+
+Overloading will help developer to create multiple outputs from multiple inputs. Overloading is not a polymorphism but by using method overloading technique, we can achive polymorphism. 
+
+When input is changing and if the output also changes then it is polymorphism. 
+
+namespace MyProgram 
+{
+	public class TestClass
+	{
+		public void test()
+		{
+		}
+		
+		public string test() //invalid because in the starting point, we have ambiguity having two same methods.
+		{
+		}
+
+		public void test(int i)
+		{
+		}
+
+		public void test(string s)
+		{
+		}
+		
+		public void test(int i, string s) //order of paramter matters
+		{
+		}
+		
+		public void test(string s, int i) //order of paramter matters
+		{
+		}
+		
+		public static void Main()
+		{
+			TestClass p = New TestClass();
+			p.text();
+		}
+	}
+}
+
+=> Example of Method overloading
+
+namespace MyProgram 
+{
+	public class TestClass
+	{	
+		public static void Main()
+		{
+			String s = "Hello World";
+			s.IndexOf('o'); //output would be 4, as index count starts form 0 and input type is character type
+			s.IndexOf('o',5); // output would be 7, as now counting starting from 5 character. Input type is character type and integer number from where you want to start search from. 
+			s.IndexOf("ll"); // output would be 2 as input arugument type is string. 
+		}
+	}
+}
+
+

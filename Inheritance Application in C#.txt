@@ -1,0 +1,78 @@
+in our DBMS terminology,
+
+Entity: It's a living or non-living objects associciated with the set of attributes.
+
+Step 1: identify the entities those are associated with the application we are developing. 
+
+E.g.: School Application: 
+
+Entities:
+	Student
+	Teaching Staff
+	Non-Teaching Staff
+
+Step 2: identify the attributes of each and every entity.
+
+Student:
+	ID
+	name
+	address
+	phone
+	class
+	marks
+	grade
+	fees
+
+Teaching Staff:
+	ID
+	name
+	address
+	phone
+	designation
+	salary 	
+	qualification
+	subject
+
+Non-Teaching Staff
+	ID
+	name
+	address
+	phone
+	designation
+	salary
+	qualification
+	subject
+	
+Step 3: identify the common attributes of each entity and put them in a hierarchial order. and create parent class with common attributes. 
+
+Step 4: define the classes representing then entities that are put in hierarchial order. 
+
+public class Person //four members
+{
+	public int id;
+	public string name, address, phone;
+}
+
+public class Students : Person //8 members
+{
+	int class;
+	char grade;
+	float marks, fees;
+}
+
+public class Staff : Person //6 members
+{
+	public string designation;
+	public double salary;	
+}
+
+public class Teaching : Staff //8 members
+{
+	string qualification, subject;
+}
+
+public class NonTeaching : Staff //8 members
+{
+	int managerID;
+	string department;
+}

@@ -1,0 +1,21 @@
+Method Overriding:
+
+- It's an approach of re-implementing a parent class method under the child class with the same signature. 
+
+- if we want to override parent's method under the child class first that method should be declared by using "virtual" modifier in the parent class. 
+
+- Any virtual method of the parent class can be override by the child class if required by using the "override" modifier.  
+
+=> Example:
+
+public Class1
+{
+	public virtual void Test(); //add "virtual" modifier in the method become overridable
+}
+
+public Class2 : Class1
+{
+	public override void Test(); //We have overriding the Test Method of Class1
+}
+
+<=
