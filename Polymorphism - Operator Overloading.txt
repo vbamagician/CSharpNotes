@@ -166,7 +166,7 @@ add this method in matrix class no in the class where it is used.
 		String TypeName = value.ToString();
 		WriteLine(TypeName);
 	}
-
+    
 	internally, WriteLiune method is overridable method of main Object class.
 
 	after implementing or overriding the ToString() method of the object class we will generate following output
