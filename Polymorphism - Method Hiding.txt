@@ -1,0 +1,158 @@
+Method Hiding/Shadowing: 
+
+CASE 1: Method overriding is an approach of re-implementing a parent class's method under child class exactly with same name and signature. 
+
+CASE 2: Method Hiding/Shadowing is also an approach of re-implementing a parent classes method under the child class exactly with the same name and signature. 
+
+- In the first case, child class re-implements parent's classes methods which are declared as virtual, whereas in the second case child class can re-implement any parent's method even the method is NOT declared as virtual.
+
+- We can re-implement a parent class method under child class by using 2 approaches. 
+	1. Method Overriding
+	2. Method Hiding/Shadowing
+
+=> Example 1: VStudio
+
+namespace MyProject
+{
+	public class ParentClass
+	{
+		public virtual void Test1()
+		{
+			Console.WriteLine("Parent's Test1 Method is Called");
+		}
+		public void Test2()
+		{
+			Console.WriteLine("Parent's Test2 Method is Called"); 
+		}
+	}
+	
+	public class ChildClass : ParentClass
+	{
+		public override void Test1() // Method Overriding 
+		{
+			Console.WriteLine("Child's Test1 Method is Called");
+		}
+		public new void Test2() // Method Hiding/Shadowing
+		{
+			Console.WriteLine("Child's Test2 Method is Called"); 
+		}
+		public static void Main()
+		{
+			ChildClass c = New ChildClass();
+			c.Test1();
+			c.Test2();
+
+			Console.ReadLine();
+		}
+	}
+}
+
+<=
+
+- After re-implementing parent classes methods under the child class the child class instance will start calling the local methods only. i.e. the re0implemented methods. But if required in any case, we can also call parent classes method from child classes by using two approaches. 
+
+1. By creating instance of parent class under the child class. 
+2. by using the BASE keyword also we can call parent's method from the child class. But keywords like "this" and "base" cannot be used from the static blocks. 
+	
+=> Example 2: VStudio
+
+namespace MyProject
+{
+	public class ParentClass
+	{
+		public virtual void Test1()
+		{
+			Console.WriteLine("Parent's Test1 Method is Called");
+		}
+		public void Test2()
+		{
+			Console.WriteLine("Parent's Test2 Method is Called"); 
+		}
+	}
+	
+	public class ChildClass : ParentClass
+	{
+		public override void Test1() // Method Overriding 
+		{
+			Console.WriteLine("Child's Test1 Method is Called");
+		}
+		public new void Test2() // Method Hiding/Shadowing
+		{
+			Console.WriteLine("Child's Test2 Method is Called"); 
+		}
+		public void ParentTest1() //this method will act as interface
+		{
+			base.Test1(); //Valid Method of calling as block is not static
+		}
+		public void ParentTest2() //this method will act as interface
+		{
+			base.Test2(); //Valid Method of calling as block is not static
+		}
+		public static void Main()
+		{
+			ParentClass p = New ChildClass();
+			p.Test1(); //valid method of calling 
+			p.Test2(); //valid method of calling
+ 
+			//Another method of calling parent's class methods. 
+			base.Test1(); //invalid method because of called from static block
+			base.Test2(); //invalid method because of called from static block
+			
+			ChildClass c = New ChildClass();
+			c.ParentTest1(); //valid method of calling 
+			c.ParentTest2(); //valid method of calling 
+			c.Test1();
+			c.Test2();
+
+			Console.ReadLine();
+		}
+	}
+}
+
+<=
+
+- A parent class reference even if created by using child class instance can't access any members that are purely defined by the child class but can call overriden members of child class. Because overriden members are not considered as pure child class members but members which are re-implemented using method of Hiding or shadowing will not be access by the parent's references or instances. 
+
+=> Example 3: VStudio
+
+namespace MyProject
+{
+	public class ParentClass
+	{
+		public virtual void Test1()
+		{
+			Console.WriteLine("Parent's Test1 Method is Called");
+		}
+		public void Test2()
+		{
+			Console.WriteLine("Parent's Test2 Method is Called"); 
+		}
+	}
+	
+	public class ChildClass : ParentClass
+	{
+		public override void Test1() // Method Overriding 
+		{
+			Console.WriteLine("Child's Test1 Method is Called");
+		}
+		public new void Test2() // Method Hiding/Shadowing
+		{
+			Console.WriteLine("Child's Test2 Method is Called"); 
+		}
+		public static void Main()
+		{
+			ChildClass c = New ChildClass(); // c is instance of child class.
+			ParentClass p = c; //p is a reference of parent class created by using child's instance
+
+			p.Test1(); // Child Class method will be executed because it has been override. 
+			p.Test2(); // Parent Class method will be executed.   	
+
+			Console.ReadLine();
+		}
+	}
+}
+
+<=
+
+
+
