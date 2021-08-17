@@ -1,0 +1,81 @@
+Abstract Method: 
+
+- a method without any method body is known as abstract method. 
+
+Abstract Class: 
+
+- a class contains any abstract members is know as abstract class. 
+
+Concept => so the takeout here is, when the logic is same you define a method in parent class and by using inheritance you can get the method in all child class. but when the logic is different for every child for a particular method of parent, you cannot define that in parent class but you can only DECLARE it ( with abstract keyword ) in the parent class and hense you can now grab the empty abstract method from the parent class and implement individually in child classes. That's how abstraction can be achieved. 
+
+Entities: Rectangle, Circle, Triangle, Cone
+
+attributes of the entities: 
+Rectangle: Width, Height
+circle: radius, pi
+Triangle: Width, height
+Cone: radius, height, pi
+
+Identifiying the common attributes: Width, Height, Radius, PI
+
+now, first define a class with all the common attributes. 
+
+=> Example 1: of abstract class
+	
+namespace AbstractImplementation
+{
+	public abstract class Figure
+	{
+		public double height, width, radius;
+		public const float PI = 3.14f;	
+		//abstract method
+		public abstract double GetArea();
+	}
+
+	public class Rectangle : Figure 
+	{
+		public Rectangle(double width, double height) 
+		{
+			this.width = width;
+			this.height = height;	
+		}
+		public override double GetArea();
+		{
+			return widht * height; 
+		}
+	}
+	
+	public class Circle : Figure 
+	{
+		public Circle(double radius)
+		{
+			this.radius = radius;
+		}
+		public override double GetArea();
+		{
+			return this.pi * radius * radius; 
+		}
+	}
+	class TestFigures 
+	{
+		static void Main()
+		{
+			Rectangle r = new Rectangle(2, 5);
+			Circle c = new Circle(2);
+			Console.WriteLine("Area of Rectangle: " + r.GetArea());
+			Console.WriteLine("Area of Circle: " + c.GetArea());
+
+			Console.ReadLine(); 	
+		}
+	}
+}
+
+<= End of Code
+
+=> Output of Example 1 
+
+	Area of Rectangle: 10
+	Area of Circle: 12.56
+
+<= End of Output 
+
