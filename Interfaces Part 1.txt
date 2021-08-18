@@ -42,6 +42,12 @@ NOTE/Concept: A simple class inherits from the parent class to consume the membe
 
 CONCEPT: if you want to add abstract method in the simple class following is the declaration
 
+public abstract void add(int a, int b);
+
+but in case of interface, 
+
+void add(int a, int b); 
+
 1. default scope of the members of the interface is public where as in case of simple class it is private.  
 
 2. By default every member of the interface is abstract, so we don't required to use "abstract" modifier. 
@@ -51,12 +57,6 @@ CONCEPT: if you want to add abstract method in the simple class following is the
 4. If required, interface can inherit from another interface.
 
 5. Every member of the interface should be implemented under the child class without fail. But while implementing we don't require to use override modifier just like we have done in case of abstract class. 
-
-public abstract void add(int a, int b);
-
-but in case of interface, 
-
-void add(int a, int b); 
 
 => Example 1:
 	
