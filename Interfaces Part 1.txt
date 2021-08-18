@@ -1,0 +1,111 @@
+Interface Part 1: 
+
+Let's understand first what is class? Because interface is also a type of class. Let's understand from the basic, what class is and why they hell we need different types of classes! 
+
+Class: is an user-defined data-type. 
+Interface: is also user-defined data-type. 
+ 
+Class is where do you find method with method bodies. but a class where method defined WITHOUT mehtod bodies called abstract class. 
+
+Class: Non-Abstract Mehtods (Methods with Mehtod Bodies).
+
+Abstract Class: Non-Abstract Mehtods (Method with Method Bodies) and also Abstract Methods (Methods without Method Bodies).
+
+Interface: Contains only Abstract Methods (only Methods without Method Bodies)
+
+NOTE: Every abstact mehtod of the interface should be implemented by the child class of the interface without fail (Mandatory).
+
+- Interface can only become parent!
+
+NOTE/Concept: A simple class inherits from the parent class to consume the members it's parent class. but if a class inherits form the Interface it is to IMPLEMENT the members of it's parent class. 
+
+- A class can inherit from a class and interface at the a time. 
+
+=> Syntax of Simple Class
+	
+[<modifiers>] class <className>
+{
+ - Defines memebers here with member's body
+}
+
+<= End of Syntax of Simple Class
+
+=> Syntax of Interface
+	
+[<modifiers>] interface <InterfaceName>
+{
+ - Defines abstract memebers here WITHOUT member's body.
+ - or Abstract Member declarations only.
+}
+
+<= End of Syntax of Interface
+
+CONCEPT: if you want to add abstract method in the simple class following is the declaration
+
+1. default scope of the members of the interface is public where as in case of simple class it is private.  
+
+2. By default every member of the interface is abstract, so we don't required to use "abstract" modifier. 
+
+3. We cannot declare any fields/variables under interface. 
+
+4. If required, interface can inherit from another interface.
+
+5. Every member of the interface should be implemented under the child class without fail. But while implementing we don't require to use override modifier just like we have done in case of abstract class. 
+
+public abstract void add(int a, int b);
+
+but in case of interface, 
+
+void add(int a, int b); 
+
+=> Example 1:
+	
+namespace InterfaceProject
+{
+	interface ITestInterface1
+	{
+		void Add(int a, int b);	
+	}
+	
+	interface ITestInterface2 : ITestInterface1
+	{
+		void Sub(int a, int b);	
+	} 
+
+	class ImplementationClass : ITestInterface2
+	{
+		//first method of implementing 
+		public void Add(int a, int b) 
+		{
+			Console.WriteLine(a + b);
+		}
+
+		//second mehtod of implementing
+		//when we use this method, we don't required to use public modifier. 
+		void ITestInterface2.Sub(int a, int b)
+		{
+			Console.WriteLine(a - b);
+		}
+
+		static void Main()
+		{
+			ImplementationClass obj = new ImplementationClass(); //first method 
+			ITestInterface2 i = obj; //Second method of implementation
+			obj.Add(10,10);
+			obj.Sub(10,5);
+			i.Add(10,10);
+			i.Sub(10,5);
+
+			Console.ReadLine();
+		}
+	}
+	
+}
+
+<= End of Example
+
+
+
+
+
+
