@@ -1,3 +1,4 @@
+/*
 Multiple Inheritance with Interface:
 
 How many types of inheritance? five type! mentioned following..
@@ -15,7 +16,9 @@ How many types of inheritance? five type! mentioned following..
 
 ANS? Consuming will cause you an ambiguity but implementation will not because in classes, methods have been already implemented and they both _might_ have some specific lines of instructions. So compiler gets confused which is of which! But in case of Interfaces, we can pass same method to the child class from multiple interfaces, because, we can now implement methods which will not cause any issues. In short, the control in classes have under parent class while in interfaces, control is in child class that's why it will not cause any issues. 
 
-=> Example 1:
+*/
+
+// => Example 1:
 
 namespace InterfaceProject
 {
@@ -67,5 +70,5 @@ namespace InterfaceProject
   }
 }
 
-<= End of Example 1
+//<= End of Example 1
 
