@@ -55,7 +55,7 @@ namespace InterfaceProject
 
     static void Main()
     {
-      MultipleIn heritanceTest obj = new MultipleInheritanceTest();
+      MultipleInheritanceTest obj = new MultipleInheritanceTest();
       obj.Test();
 
       Interface1 i1 = obj;
