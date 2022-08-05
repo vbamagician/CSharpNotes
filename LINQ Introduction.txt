@@ -1,0 +1,87 @@
+What is LINQ?
+
+LINQ stands for Language Integrated Query!
+SQL stands for Structured Query Language!
+
+for C# .net, Microsoft has launched new query language to help application developers to query tables, collection, array objects just like how developers doing query for a data using SQL from the relational databases. It was not easy for the developers before LINQ was introduced. How? 
+
+Let's see how our code looks when we want to filter one array with some condition without LINQ! 
+
+int[] arr = {12, 23, 43, 54, 54};
+
+get all the values everything above 40 in another array! 
+
+int Count = 0;
+for(int i=0; i<arr.Length; i++){
+	if(arr[i] > 40){
+		Count += 1;
+	}
+}
+
+int[] brr = new int[Count];
+int index = 0;
+
+for(int i=0; i<arr.Length; i++){
+	if(arr[i] > 40){
+		brr[index] = arr[i];
+		index += 1;
+	}
+}
+
+Array.Sort(brr);
+Array.Reverse(brr);
+
+foreach(int i in brr) {
+	Console.Write(i + " ");
+}
+Console.ReadLine();
+
+This is the usual process happening when we are not using LINQ.
+ 
+Suppose my all the array values are placed in a one table and in one single column
+
+This way 
+
+Table1
+---------
+Col1
+---------
+12
+23
+34
+34
+-
+-
+34
+34
+
+How do you write SQL query to get values greater than 40?
+
+=> SELECT Col1 FROM Table1 WHERE Col1 > 40 ORDER BY Col1 DESC;
+
+So the basic idea was, if you can write a query to a table using SQL then why can't we have something that can help us to write query to retrive data from the arrays?
+
+That's why LINQ has been introduced by microsoft! 
+
+But that is not it! LINQ is not only limited to Arrays! But it has been applicable to write queries on wide range of data sources as well!Like, Arrays, Collections, Database Tables, DataSets, XML Data. 
+
+Okay, before we begin, let's get back to the SQL for a moment! How do we write SELECT SQL Queries? I mean General syntax?
+
+=> SELECT <ColList> FROM <Table> [as <alias>] [<clauses>]
+
+now here is the general syntax for writing LINQ queries
+
+FROM <alias> in <coll | arr> [<clauses>] SELECT <alias>
+
+NOTE:= [] is used to represent optionality of parameters! 
+
+So How do we write the same logic using LINQ? How do we populate brr array using LINQ?
+
+here is the syntax
+
+var brr = from i in arr select i;
+var brr = from i in arr where i > 40 select i;
+var brr = from i in arr where i > 40 orderby i select i;
+var brr = from i in arr where i > 40 orderby i descending select i; 
+
+One line code!! This is the beuty!
