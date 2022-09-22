@@ -1,0 +1,59 @@
+Enumeration or Enum Types:
+
+A enum is also a user-defined data type, so it is always better to define an Enum directly under the name space. But it is also possible to define a enum under a Class or Structure. 
+
+=> Syntax
+
+[<modifiers>] enum <Name> : [<type>] 
+{
+	- List of Named constant values 
+}
+
+=> Implementation 
+
+public enum Days
+{
+	Monday = 1, 
+	Tuesday = 11, 
+	Wednesday = 21, 
+	Thursday = 31, 
+	Friday = 41
+}
+
+=> Use of concept 
+
+static void Main()
+{
+	//To print all the values 
+	foreach(int i in Enum.GetValues(typeof(Days)))
+	{
+		Console.WriteLine(i + ": " + (Days)i);
+	}
+	
+	//to print all the names
+	foreach(string s in Enum.GetNames(typeof(Days)))
+	{
+		Console.WriteLine(s);
+	}
+	
+	Console.ReadLine();
+}
+
+=> Output Start 
+
+1: Monday 
+11: Tuesday
+21: Wednesday
+31: Thursday
+41: Friday
+Monday 
+Tuesday
+Wednesday
+Thursday
+Friday
+
+<= Output End
+
+Supported types are integer only! like int, byte, short, long, uint, ushort, ulong, and sbyte
+
+
