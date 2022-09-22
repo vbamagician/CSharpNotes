@@ -1,0 +1,31 @@
+Differences between Class and Structure
+
+1. Class is reference type whereas Structure is Value type.
+
+2. Memory allocation for instance of Class is performed on Managed Heap whereas memory allocation for instance of Structure is performed on Stack. 
+
+3. We use class for representing an entity with large volumes of data whereas we use structures for representing smaller volumes of data. 
+
+Note: All pre-defined data types under the libraries of our language which come under reference type category E.g.: String and Object are classes, whereas all the pre-defined data types which come under value type category E.g.: int (Int32), float (Single), bool (Boolean) are structures. 
+
+4. in case of a class, New keyword is mandatory for creating an instance whereaws in case of structure, it is optional. 
+
+5. Fields of a class can be initialized at the time of declaration whereas it's not possible with fields in structure. 
+
+Note: If the structure contains any fields, then we need to initialize those fields either by explicitly calling the default constucter with the help of New or else we are not using "new" for creating the instance we need explicitly assign value to the field referring it through the instance by assigning the value. 
+
+6. We can define any constructor under the class that is either parameter less or parameterized and if now constructor is defined then there will be an implicit constructor which is default whereas in case of a structure, parameter less or default constructor is always implicit and can't defined explicitly again, what we can define is only parameterized constructor. 
+
+7. if zero constructors are defined in a class after compilation where will be 1 constructor (implicit) and if we define "n" constructor in a class after compilation there will be "n" constructor only whereas in case of a structure if we define "0" constructors then after compilation there will be 1 constructor (implicit) and if we define "n" constructors after compilation there will be "n+1" constructors. 
+
+8. Class can be inherited by other classes. Whereas structures cannot be inherited by other structures i.e. a structure doesn't support inheritance. 
+
+9. A class can implement an interface same as the structure also can implement an interface. 
+
+
+
+
+
+
+
+  
