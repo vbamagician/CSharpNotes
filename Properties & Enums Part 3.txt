@@ -1,0 +1,129 @@
+So in the part 2 we have used Customer class and now for this we are going to add three more attributes to the same class. What are those?
+
+	City
+	State
+	Country
+
+public class Customer
+{
+	int _CustomerID;
+	bool _Status;
+	string _CustomerName;
+	double _Balance;
+	Cities _City;
+	
+	//Constructor
+	public Customer(int CustomerID, bool Status, string CustomerName, double Balance. Cities City)
+	{
+		_CustomerID = Custome rID;
+		_Status = Status;
+		_CustomerName = CustomerName;
+		_Balance = Balance;
+		_City = City;
+	}   
+
+	public int CustomerID
+	{
+	 	get { return _CustomerID; }
+		set { _CustomerID = value; } //implicitely paramterized value and value has same datatype what property has been assigned with 
+	} 
+
+	public Cities City
+	{
+	
+		get { return _City; }
+		set { _City = value; }	
+
+	}
+
+	public bool Status
+	{
+		get { return _Status; }
+		set { _Status = value; }		
+	} 
+
+	public string CustomerName
+	{
+		get { return _CustomerName; }
+		set 
+		{ 
+			if (_Status == true) 
+				_CustomerName = value; 
+		}		
+	}
+
+	public bool Balance
+	{
+		get { return _Balance; }
+		set { _Balance = value; }		
+	}
+
+
+}
+
+So here in this example, there could be a acceptable list of cities and that has to be revealed to the user and to achieve that we can use ENUM property 
+
+Here is the syntax of ENUM 
+
+[<modifiers>] enum <Name>
+{
+List of named constants
+}
+
+public enum ConsoleColor 
+{
+Black, Blue, Cyan....Yellow, Red
+}
+
+public enum Cities
+{
+Delhi, Mumbai, Chennai, Kolkata, Bangaluru, Hyderabad
+}
+
+
+How to add ENUMS?
+
+Go to the Add File and search for the Code File
+
+now, select "Code File" type and give a name as "Cities.cs"
+
+
+Defining of ENUM
+
+using System;
+
+namespace Properties Project
+{
+	public enum Cities
+	{
+		Delhi, Mumbai, Chennai, Kolkata, Bengaluru, Hyderabad
+	}
+}
+
+What if we want to control set methods? 
+
+Earlier we can only set limitation at the property level like 
+
+protected string State
+{
+	get { return _State; } 
+	set 
+	{
+		_State = value;
+	}
+}
+above will also limit the get accessor as well. but what if we want to free get but limit the set? 
+
+with c# .net 2.0 we  can also protect accessors as well 
+
+protected string State
+{
+	get { return _State; } 
+	protected set 
+	{
+		_State = value;
+	}
+}
+
+
+

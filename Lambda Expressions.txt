@@ -1,0 +1,47 @@
+Annonymous method of Delegates and Lambda Expressions have kind of functional similarities. 
+
+Here is the example of the Annonymous Method
+
+GreetingsDelegate obj = delegate (string name)
+{
+	return "Hello " + name + " a very good morning";
+};
+
+string str = obj.Invoke("Scott");
+
+Here is the example of the lambda expression
+
+namespace DelegatesProject
+{
+
+public delegate string GreetingsDelegate(string name);
+
+class LambdaExpressions
+{
+	public static string Greetings(string name)
+	{
+		returb "Hello " + name + " a very good morning";
+	}
+	
+	static void Main()
+	{
+		//General  Usage of Delegates
+		GreetingsDeletegate obj = new GreetingsDelegate(Greetings);
+		string str = obj.Invoke("Raju");
+
+		//With Use of Annonymous Method
+		GreetingsDelegate obj = delegate (string name)
+		{
+			return "Hello " + name + " a very good morning";
+		};
+		string str = obj.Invoke("Scott");	
+		
+		//Lambda Expressions
+		GreetingsDelegate obj = (name) => return "Hello " + name + " a very good morning";
+		
+		//Output
+		Console.WriteLine(str);
+		Console.ReadLine();		
+	}
+}
+}

@@ -1,0 +1,74 @@
+we define class to represent entities
+
+Customer (Class/entity)
+
+list of attributes
+-CustomerID
+-Status
+-CustomerName
+-Balance
+
+public class Customer
+{
+	int _CustomerID;
+	bool _Status;
+	string _CustomerName;
+	double _Balance;
+	
+	//Constructor
+	public Customer(int CustomerID, bool Status, string CustomerName, double Balance)
+	{
+		_CustomerID = CustomerID
+		_Status = Status
+		this.CustomerName = CustomerName
+		this.Balance = Balance	
+	}   
+
+	public int CustomerID
+	{
+	 	get { return _CustomerID; }
+		set { _CustomerID = value; } //implicitely paramterized value and value has same datatype what property has been assigned with 
+	} 
+
+	public bool Status
+	{
+		get { return _Status; }
+		set { _Status = value; }		
+	} 
+
+	public bool CustomerName
+	{
+		get { return _CustomerName; }
+		set 
+		{ 
+			if (_Status == true) 
+				_CustomerName = value; 
+		}		
+	}
+
+	public bool Balance
+	{
+		get { return _Balance; }
+		set { _Balance = value; }		
+	}
+}
+
+Now if I want to consume Customer class in another class then ? 
+
+Class TestCustomer
+{ 
+	static void Main()
+	{
+		Customer customer =  New Customer(1, true, "John", 1234.56)
+		Console.ReadLine();
+	}
+}
+
+NOTE: default scope of the property within class is PRIVATE. You have to explicitely PUBLIC its scope to allow other classes to consume them and update the Status of the instance. 
+
+We can also assign variable to public access and we can hence allow them Get and Set by user without writing get and set methods but still why we are using it? it is just because with variable we cannot control it's behaviour while with property we can control it, Please see the set method implementation of CustomerName property. 
+
+
+
+
+

@@ -1,0 +1,50 @@
+LINQ to Sql
+
+Microsoft has launch new concept called LINQ from .net 3.5
+
+SQL can help only to communicate with Relational Databases while LINQ can help to communicate many objects like following 
+
+LINQ to Objects:Write queries on Arrays, Collections etc.
+
+LINQ to Databases: DataTables, Relational Database Tables
+	- LINQ to ADO.NET for queries on DataTables
+	- LINQ to SQL for queries on SQL Server 
+	- LINQ to Entities for other than SQL Server
+
+LINQ to XML:XML Files 
+
+=> It's a query language that is introduce in .net 3.5 framework for working with relational Database i.e. SQL Server (only)
+
+=> LINQ to SQL is not only about quering the data but it also allow us to perform insert, update and delete operations also we can call them CRUD operations. 
+
+=> CRUD: Create(insert), Read(select), Update, Delete 
+
+Note: We can also call stored procedures using LINQ to SQL
+
+?=> Already there is a language knows as SQL using which we can interact with SQL Server with the help of ADO.NET. Then why we should use LINQ?
+
+SQL => SQL Server
+1. Runtim SQL Statements checked by the SQL Server engine not by the C# Compiler
+2. Not Type SAFE. 
+3. No Intellisense support is available
+4. Debugging of SQL Statements is not possible
+5. Code is a combination of Object Oriented and Relational. 
+
+"INSERT INTO students VALUES(" + TextBox1.text + ", '" + textbox2.text + "')";
+
+LINQ => SQL Server 
+1. Compile Time Syntax checking.
+2. Type Safe.
+3. Intellisense support is available. 
+4. Debugging of LINQ statements is possible.
+5. Pure Object Oriented Code. 
+
+Every table is a class! 
+We do not have column in LINQ. Every column is a property
+We do not have rows or record in LINQ. Every row  or record become instance of your classes. 
+We do not have stored procedured in LINQ. We instead have Methods. 
+
+Table		=> Class
+Column		=> Property
+Row		=> Instance of Class
+Store Procedure	=> Method

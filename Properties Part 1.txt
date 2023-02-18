@@ -1,0 +1,33 @@
+Properties:
+
+-> Property is member of a class using which we can expose values associated with a class to the outside environment.
+
+public class Circle
+{
+  //public double Radius = 12.34;
+
+  double Radius = 12.34;
+
+  public double GetRadius() //Provide only get access to the value 
+  {
+   return Radius;
+  }
+  public void SetRadius(double value) //Provide only set access
+  {
+   Radius = value;
+  }
+}
+
+public class TestCircle
+{
+  static void Main()
+  {
+    Circle c = new Circle();
+    //double radius = c.Radius; 	//Getting the old value 
+    //c.Radius = 12.423; 		//Setting a new value 
+    double radius = c.GetRadius();
+    c.SetRadius(34.5434);
+  }
+}
+
+Important: Never declare fields of a class as a "public"

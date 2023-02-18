@@ -1,0 +1,217 @@
+What are delegates?
+
+Delegate is a type safe function pointer. 
+
+A delegate hold the reference of a method and then calls the method for execution.  
+
+To call a method using a delegate, we have three steps 
+
+Step 1. Define a delegate
+
+Syntax: [<modifiers>] delegate void|type <Name>([<parameter>]) 
+
+public delegate void AddDelegate(ind a, ind b);
+public void AddNums(ind a, int b);
+
+public delegate string SayHello(string name);
+public static string SayDelegate(string name);
+
+Note: Parameter and Return Type should be same for both Delegate and Method
+Note: Delegate is also user defined type same as Class, Interface, Structure
+
+DIff between Class and Structure? 
+Class is a reference type and structure is value type. 
+where delegate is also reference type. 
+
+In C#, we generally define types under then name spaces. Name space is logical container of a type.
+
+Step 2: Instantiating the delegates 
+
+AddDelegate ad = new AddDelegate(p.AddNums);
+SayDelegate sd = new SayDelegate(Program.SayHello);
+
+Step 3: Now call the delegate by passing required parametere valus, so that internally the method which is bound with the delegate gets executed. 
+
+namespace DelegateProject
+{
+	
+	//Step 1: Defining a delefate
+	public delegate void AddDelegate(int a, int b);
+	public delegate string SayDelegate(string str);
+
+	//Step 2: Instantiation of a delegate 
+
+class Program
+{
+	
+	public void AddNums(ind a, int b)
+	{
+		Console.WriteLine(a+b);
+	}
+	
+	public static string SayHello(string name)
+	{
+		return "Hello " + name;
+	}
+
+	static void Main(string[] args)
+	{
+		Program p = new Program();
+		//p.AddNums(100,50);
+		AddDelegate ad = new AddDelegate(p.AddNums);
+		ad(100,50);	
+		ad.Invoke(100,50);	
+
+		//string str = Program.SayHello("Raju");
+		SayDelegate sd = new SayDelegate(Program.SayHello);
+		string str = sd("Raju");
+		string str = sd.Invoke("Raju");
+		Console.WriteLine(str);
+
+		Console.ReadLine();
+	}
+} 
+}
+
+
+There's is multicaste delgation too! 
+
+In a class if at all we have multiple methods with same signature then we
+
+
+namespace DelgatesProject
+{
+
+public delegate void RectDelegate(double Width, double Height);
+
+
+class Rectangle
+{
+	
+	public void GetArea(double Width, double Height)
+	{
+		Console.WriteLine(Width * Height);
+	}
+
+	public void GetPerimeter(double Width, double Height)
+	{
+		Console.WriteLine(2 * (Width + Height));
+	}
+
+	static void Main(string[] args)
+	{
+		Rectangle rect = new Rectangle();
+
+		//rect.GetArea(12.34, 56.67);
+		//rect.GetPrimeter(12.34, 56.67);
+
+		RectDelegate obj = new RectDelegate(rect.GetArea);
+		//anothr way of binding the constructor 
+		ReatDelegate obj = rect.GetArea;
+		obj += rect.GetPerimeter;
+
+		obj.Invoke(12.34, 56.67);
+ 
+		Console.ReadLine();
+	}
+}
+}
+
+Note: When you multicast a delgate, functions or returning methods will be overritten by the following function's return.
+
+PART THREE DELGATES 
+
+Annonymous Methods:
+
+namespace DelegatesProject
+{
+
+public delegate string GreetingsDelegate(string name);
+
+class AnonymousMethods
+{
+	static void Main()
+	{	
+		//annonymous method
+   		GreetingsDelegate obj = delegate (string name)
+		{
+			return "Hello " + name + " a very good morning!";
+		}
+
+		string str = obj.Invoke("Scott");
+		Console.WriteLine(str);
+		Console.ReadLine();
+	}	
+}
+}
+
+----------------------------------------------------------------------------------
+Predefined Generic Delegates
+
+Func Delegate
+Action Delegate
+Predicate Delegate
+
+func delegate will be used when your delegate returning a value!
+action delegate will be used when your delegate returns void!
+predicate is a delegate when we want return type as boolean. 
+
+In simple term, we do not required to use the term delegate at all if we can use these generic predefined delegates.
+
+namespace DelegatesProject
+{
+
+//We do not required following delegates to be mentioned here to use generic delegates 
+//public delegate double Delegate1(int x, float y, double z);
+//public delegate void Delegate2(int x, float y, double z);
+//public delegate bool Delegate3(string str);
+
+class GenericDelegates
+{
+	public static double AddNums(int x, float y, double z)
+	{
+		return x + y + z;
+	}
+
+	public static void AddNums(int x, float y, double z)
+	{
+		Console.WriteLine(x + y + z);
+	}
+
+	public static bool CheckLength(string str)
+	{
+		if str.Length > 5) 
+			return true;
+		return false;
+	}
+
+	static void Main()
+	{
+		//Delegate1 obj1 = AddNums1;
+		func<int, float, double, double> obj1 = (x, y, z) => return x + y + z;
+		double result = obj1.Invoke(100, 34.5f, 194.234);
+		Console.WriteLine(result);
+
+		//Delegate2 obj2 = AddNums2;
+		action<int, float, double> obj2 = (x, y, z) => Console.WriteLine(x + y + z);
+		obj2.Invoke(100, 34.5f, 194.234);
+
+		//Delegate3 obj3 = CheckLength;
+		predicate<string> obj3 = (str) => 
+		{
+			if str.Length > 5) 
+				return true;
+			return false;
+		}
+		bool status = obj3.Invoke("Hello");
+		Console.WriteLine(status);
+
+		Console.RealLine();
+	}  
+}
+}
+
+
+
+
+

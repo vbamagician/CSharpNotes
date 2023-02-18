@@ -1,0 +1,117 @@
+Extention Methods:
+
+This is a new featuer that has been added in C# 3.0
+
+- it is a mechanism of adding new methods into an existing class or structure also without modifying the source code of the original type and in this process we do not required any permissions from original type and the original type doesn't required any re-compilation. 
+
+- Inheritance is a mechanism using which we can extend the functionalities of a class.
+
+Problem with inheritance. 
+
+- we can not apply inheritance on sealed class. 
+- if the original type is not a class and it is a structure then we cannot apply inheritance. 
+
+let's see this practically how it can be done? 
+
+namespace ExtentionMethodsProject
+{
+class Program
+{
+	public void Test1()
+	{
+		Console.WriteLine("Method 1");
+	}
+
+	public void Test2()
+	{
+		Console.WriteLine("Method 2");
+	}
+
+	static void Main(string[] args)
+	{
+		Program p = new Program();
+		p.Test1();
+		p.Test2();
+	
+		Console.ReadLine();	
+	}
+}
+}
+
+Now I want to add another method into this class?
+
+namespace ExtentionMethodsProject
+{
+static class StatClass
+{
+	public static void Test3(this Program p)
+	{
+		Console.WriteLine("Method 3");
+	}
+}
+}
+
+Now to check if the Program class has three methods or not? 
+
+namespace ExtentionMethodsProject
+{
+class TextExtMethods
+{
+	static void Main()
+	{
+		Program p = new Program();
+		//you will find instance p of class Program has been registered with three methods. 
+		p.Test1();
+		p.Test2();
+		p.Test3();
+
+		Console.ReadLine();
+	}
+}
+}
+
+"this program p" is binding parameter 
+
+- Extention methods are define as static but once they are bound with any class or structure they turn into non-static. 
+
+- if an extention method is defined with the same name and signature of the existing method in the class then extention method will not be call and preference  always goto the original method only.  
+
+- the first parameter of an extention method should be the name of the type to which that method has to be bound and this parameter is not taken into consideration while calling the extention method
+
+- an extension method should have one and only one binding parameter and it should be first place only. 
+
+- NOTE: if an extention method is defined with n parameters then while calling it there will be n-1 parameteres only becayse the binding parameter is excluded. 
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

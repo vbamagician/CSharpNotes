@@ -1,0 +1,94 @@
+String vs StringBuilder
+
+- Strings are immutable. 
+
+string str = "Hello";
+str = str + " World";
+str = str + " xyz";
+
+in a heap memory, first assign of value "hello" 
+and when you concatenate other string with str var, 
+
+Memory Location 1: "Hello"
+Memory Location 2: "Hello World"
+Memory Location 3: "Hellow Word xyz"
+
+- StringBuilder is mutable.
+
+StringBuilder sb = new StringBuilder("Hello");
+
+- Even though we have passed 5 characters but you will get 16 characters of memory. 
+
+sb = "Hello";
+sb.Append(" World");
+sb.Append(" America");
+
+As we append " Americal" to the sb, the total string length would be greater than 16 characters hence, it automatically double the space and 16 becomes 32.
+
+E.g.
+
+StringBuilder provided by using System.Text
+
+=> Code
+
+using System;
+using System.Text;
+using System.Diagnjostics;
+
+namespace StringBuilderProject
+{
+class Program
+{
+	static void Main(string[] args)
+	{
+		string s = "";
+		
+		Stopwatch sw1 = new Stopwatch();
+		sw1.Start();
+
+		for(int i=1; i<=100000; i++)
+		{
+			s = s + i;
+		}
+		sw1.Stop();		
+		
+		StringBuilder sb = new StringBuilder(100000);
+		
+		Stopwatch sw2 = new Stopwatch();
+		sw2.Start();
+
+		for(int i=1; i<=100000; i++)
+		{
+			sb.Append(i);
+		}
+		sw2.Stop();
+
+		Console.WriteLine("Time Taken for String: " + sw1.ElapsedMilliseconds);
+		Console.WriteLine("Time Taken for StringBuilder: " + sw2.ElapsedMilliseconds);
+
+		Console.ReadLine();
+	}
+}
+}
+
+Output of above code:
+
+Time taken for String: 33864
+Time taken for StringBuilder: 27
+
+Impressive! 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
